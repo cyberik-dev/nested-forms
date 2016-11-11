@@ -1,0 +1,73 @@
+<%= form_for(@hotel) do |f| %>
+  <% if @hotel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
+
+      <ul>
+      <% @hotel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <h2>Room Categories</h2>
+  <%= f.fields_for :room_categories do |room_category| %>
+  <div class="room_category_fields" id="room_category_groups">
+    <div class="field room_group" id="hotel_room_categories_attributes_0">
+      <%= room_category.label :name %><br>
+      <%= room_category.text_field :name %>
+      <%#= room_category.check_box :_destroy %>
+      <%#= room_category.label :_destroy, 'remove' %>
+    </div>
+
+    <a href="#" onclick="addMore();">Add Another</a>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
+<br><br><br>
+
+<div id="groups">
+    <div class='more_group' id="post_relics_attributes_0">
+        <div class='photo'> <a data-toggle="upload" href="#">Insert photo</a>
+
+            <input accept="image/*" id="post_relics_attributes_0_photo" name="post_relics_attributes_0_photo" type="file" />
+        </div>
+        <div class='fields'>
+            <label for="post_relics_attributes_0_title">Title</label>
+            <input id="post_relics_attributes_0_title" name="post_relics_attributes_0_title" type="text" value="" />
+            <label for="post_relics_attributes_0_description">Description</label>
+            <input id="post_relics_attributes_0_description" name="post_relics_attributes_0_description" type="text" value="" />
+        </div>
+        <input id="post_relics_attributes_0_id" name="post_relics_attributes_0_id" type="hidden" value="6" />
+    </div>
+    <div class='more_group' id="post_relics_attributes_1">
+        <div class='photo'> <a data-toggle="upload" href="#">Insert photo</a>
+
+            <input accept="image/*" id="post_relics_attributes_1_photo" name="post_relics_attributes_1_photo" type="file" />
+        </div>
+        <div class='fields'>
+            <label for="post_relics_attributes_1_title">Title</label>
+            <input id="post_relics_attributes_1_title" name="post_relics_attributes_1_title" type="text" />
+            <label for="post_relics_attributes_1_description">Description</label>
+            <input id="post_relics_attributes_1_description" name="post_relics_attributes_1_description" type="text" />
+        </div>
+        <input id="post_relics_attributes_1_id" name="post_relics_attributes_1_id" type="hidden" />
+    </div>
+</div>
+<button onclick="addMoreEx();">Add Another</button>
+
+<br><br><br>

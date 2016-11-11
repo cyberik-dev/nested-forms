@@ -1,4 +1,10 @@
 NestedForms::Application.routes.draw do
+  resources :room_categories
+
+
+  resources :hotels
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
